@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gayathri N | AWS Cloud Trainer</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- AOS Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+         :root {
+            --bg: #0e0f13;
+            --card: rgba(255, 255, 255, 0.08);
+            --text: #eaeaea;
+            --accent: #4db5ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        /* NAVBAR */
+        
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(14, 15, 19, 0.95);
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 10%;
+            z-index: 999;
+            border-bottom: 1px solid rgba(77, 181, 255, 0.2);
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover,
+        nav a.active {
+            color: var(--accent);
+        }
+        /* HERO */
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 0 20px;
+            background: url('hero-bg.jpg') center/cover no-repeat fixed;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: #fff;
+        }
+        
+        .hero span {
+            color: var(--accent);
+        }
+        
+        .hero p {
+            margin: 20px 0 30px;
+            max-width: 600px;
+            color: #ddd;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 26px;
+            background: var(--accent);
+            color: #000;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, background 0.3s ease;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            background: #1e90ff;
+        }
+        /* SECTIONS */
+        
+        section {
+            padding: 80px 10%;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--accent);
+            text-align: center;
+        }
+        /* EDUCATION & EXPERIENCE CARDS */
+        
+        .card {
+            background: var(--card);
+            padding: 25px 30px;
+            border-radius: 18px;
+            margin: 20px auto;
+            max-width: 900px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(77, 181, 255, 0.3);
+        }
+        
+        .card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            color: #dcdcdc;
+            margin: 6px 0;
+        }
+        /* EDUCATION LOGO CARD FIX */
+        
+        .edu-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .edu-logo {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            flex-shrink: 0;
+        }
+        
+        .edu-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .edu-content h3 {
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        .edu-content p {
+            margin: 4px 0;
+            color: #dcdcdc;
+        }
+        /* Ensure overlay appears above but content stays readable */
+        
+        .project-card .overlay {
+            z-index: 5;
+        }
+        /* Mobile fix */
+        
+        @media (max-width: 768px) {
+            .edu-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        /* EXPERIENCE LOGO LAYOUT */
+        
+        .exp-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .exp-logo {
+            width: 90px;
+            height: 90px;
+            background: #fff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .exp-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .exp-content {
+            flex: 1;
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .exp-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        /* ABOUT */
+        
+        .about {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .about img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            transition: transform 0.5s ease;
+        }
+        
+        .about img:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+        /* SKILLS */
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .skill {
+            padding: 12px 22px;
+            border-radius: 25px;
+            background: rgba(77, 181, 255, 0.15);
+            border: 1px solid var(--accent);
+            animation: pop 2s infinite alternate;
+        }
+        
+        @keyframes pop {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.05);
+            }
+        }
+        /* PROJECTS */
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        /* PROJECT CARD WITH BLUE CORNER */
+        
+        .project-card {
+            position: relative;
+            background: var(--card);
+            padding: 25px;
+            border-radius: 18px;
+            overflow: hidden;
+            /* BLUE CORNER FEATURE */
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 18px 45px rgba(77, 181, 255, 0.35);
+        }
+        
+        .project-card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .project-card p {
+            color: #dcdcdc;
+            margin: 6px 0;
+        }
+        /* OVERLAY */
+        
+        .project-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .overlay {
+            opacity: 1;
+        }
+        /* BUTTONS */
+        
+        .project-card .overlay a {
+            padding: 10px 18px;
+            border-radius: 30px;
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .project-card .overlay a:hover {
+            transform: scale(1.08);
+            background: #fff;
+        }
+        
+        .overlay a {
+            background: var(--accent);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .overlay a:hover {
+            transform: scale(1.1);
+        }
+        /* CONTACT */
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            font-size: 1.8rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: scale(1.3);
+        }
+        /* FOOTER */
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        /* RESPONSIVE */
+        
+        @media screen and (max-width:768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                max-width: 100%;
+            }
+            .about {
+                flex-direction: column;
+            }
+            .skills {
+                justify-content: center;
+            }
+        }
+        /* CERTIFICATE MODAL */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(77, 181, 255, 0.5);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .cert-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .cert-btn:hover {
+            background: var(--accent);
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div><b>Gayathri Nandakumar</b></div>
+        <div>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Gayathri N</h1>
+        <h1><span>Cloud Trainer</span></h1>
+        <p>Passionate Cloud Trainer with hands-on experience in AWS, cloud security, infrastructure automation, and mentoring students through real-world cloud labs and projects. Trained via LinkedIn Learning and FITA Academy.</p>
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="Gayathri_Nandhakumar_Guest_Faculty_Cloud_Computing.pdf.docx" class="btn" download>Download Resume</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" data-aos="fade-up">
+        <h2>About Me</h2>
+        <div class="about">
+            <img src="profile.jpeg" alt="Gayathri Photo" data-aos="zoom-in">
+            <div data-aos="fade-left">
+                <p> I am a Cloud Computing professional and Guest Faculty from Trichy, Tamil Nadu, with a B.Sc. in Computer Science. I have hands-on experience in AWS architecture, cloud security, and infrastructure automation, gained through internships
+                    and professional training at FITA Academy. Currently, I deliver cloud training and workshops, mentoring students to understand real-world deployments and best practices. I have successfully led large workshops, guiding 100+ students
+                    at a time, and focus on bridging the gap between theoretical concepts and practical implementation. Passionate about teaching, I aim to empower learners with industry-relevant cloud skills and prepare them for professional success.I
+                    have delivered cloud training and workshops, mentoring students to understand real-world deployments and best practices
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" data-aos="fade-up">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill" data-aos="flip-left">AWS Cloud Hands-on Labs</div>
+            <div class="skill" data-aos="flip-left" data-aos-delay="100">Cloud Security Basics</div>
+            <div class="skill" data-aos="flip-left" data-aos-delay="200">Infrastructure Automation (Terraform)</div>
+            <div class="skill" data-aos="flip-left" data-aos-delay="300">Cloud Monitoring & Alerts (CloudWatch/SNS)</div>
+            <div class="skill" data-aos="flip-left" data-aos-delay="400">Linux & Python Labs</div>
+            <div class="skill" data-aos="flip-left" data-aos-delay="500">HTML, CSS, Web Basics for Cloud Projects</div>
+            <div class="skill" data-aos="flip-left" data-aos-delay="600">Student Mentoring & Lab Guidance</div>
+            <div class="skill" data-aos="flip-left" data-aos-delay="700">Workshop Delivery & Curriculum Design</div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <!-- EDUCATION -->
+    <section id="education" data-aos="fade-up">
+        <h2>Education</h2>
+
+        <div class="project-card" data-aos="zoom-in">
+
+            <div class="edu-item">
+                <div class="edu-logo">
+                    <img src="saasc.jpg" alt="College Logo">
+                </div>
+
+                <div class="edu-content">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p><b>College:</b> Srimad Andavan Arts & Science College, Trichy</p>
+                    <p><b>Duration:</b> 2021 – 2024</p>
+                    <p><b>CGPA:</b> 8.09</p>
+                </div>
+            </div>
+
+            <!-- Hover Overlay -->
+            <div class="overlay">
+                <button class="cert-btn" onclick="openCert('provisional.jpg')">
+                View Certificate
+            </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="certification" data-aos="fade-up">
+        <h2>Certifications</h2>
+
+        <div class="project-card" data-aos="zoom-in">
+            <h3>AWS Solutions Architect – Training</h3>
+            <p>Completed training on AWS architecture, cloud deployment, and security practices.</p>
+            <p><b>Source:</b> LinkedIn Learning & FITA Academy</p>
+            <div class="overlay">
+                <button class="cert-btn" onclick="openCert('aws-cert.jpg')">View Certificate</button>
+            </div>
+        </div>
+
+        <hr style="margin:20px 0; border:0.5px solid rgba(255,255,255,0.2);">
+
+        <div class="project-card" data-aos="zoom-in">
+            <h3>Linux Essentials</h3>
+            <p>Learned commands and had hands-on experience in Linux system administration.</p>
+            <p><b>Source:</b> LinkedIn Learning</p>
+            <div class="overlay">
+                <button class="cert-btn" onclick="openCert('linux.jpg')">View Certificate</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <!-- EXPERIENCE -->
+    <section id="experience" data-aos="fade-up">
+        <h2>Experience</h2>
+
+        <!-- ELYSIUM ACADEMY -->
+        <div class="project-card" data-aos="zoom-in">
+
+            <div class="edu-item">
+                <div class="edu-logo">
+                    <img src="Elysium.jpg" alt="Elysium Academy Logo">
+                </div>
+
+                <div class="edu-content">
+                    <h3>Cloud Trainer / Junior Trainer</h3>
+                    <p><b>Organization:</b> Elysium Academy</p>
+                    <p><b>Duration:</b> April 1, 2025 – December 31, 2025</p>
+                    <p><b>Responsibilities:</b> AWS labs, cloud deployment training, real-time demos</p>
+                </div>
+            </div>
+
+            <!-- Hover Overlay -->
+            <div class="overlay">
+                <button class="cert-btn" onclick="openCert('Experience_Letter_Gayathri.jpg')">
+                View Experience Letter
+            </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERNSHIPS -->
+    <section id="internship" data-aos="fade-up">
+        <h2>Internships</h2>
+
+        <!-- BRAINWAVE MATRIX -->
+        <div class="project-card" data-aos="zoom-in">
+
+            <div class="edu-item">
+                <div class="edu-logo">
+                    <img src="brainwave.jpg" alt="Brainwave Matrix Logo">
+                </div>
+
+                <div class="edu-content">
+                    <h3>Cloud Computing Intern</h3>
+                    <p><b>Organization:</b> Brainwave Matrix Solutions</p>
+                    <p><b>Focus:</b> AWS fundamentals, cloud services, hands-on labs</p>
+                </div>
+            </div>
+
+            <div class="overlay">
+                <button class="cert-btn" onclick="openCert('brainwavematrix.jpg')">
+            View Experience Letter
+            </button>
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- CODTECH -->
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="150">
+
+            <div class="edu-item">
+                <div class="edu-logo">
+                    <img src="codtech.jpg" alt="CodTech Logo">
+                </div>
+
+                <div class="edu-content">
+                    <h3>Cloud Computing Intern</h3>
+                    <p><b>Organization:</b> CodTech IT Solutions</p>
+                    <p><b>Focus:</b> EC2, S3, CloudWatch, real-time AWS tasks</p>
+                </div>
+            </div>
+
+            <div class="overlay">
+                <button class="cert-btn" onclick="openCert('codtechcertificate.jpg')">
+                View Experience Letter
+            </button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <!-- PROJECTS -->
+    <!-- PROJECTS -->
+    <section id="projects" data-aos="fade-up">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <div class="project-card" data-aos="zoom-in">
+                <h3>Infrastructure as Code – AWS</h3>
+                <p>Automated AWS resource provisioning for a fully functional cloud environment using Terraform.</p>
+                <p><b>Tech:</b> AWS, Terraform</p>
+                <div class="overlay">
+                    <a href="https://github.com/Gayathri-Nandakumar16/IAC-terraform" target="_blank">GitHub</a>
+                    <a href="https://drive.google.com/file/d/1KhuEjRiv1D12StbXuSnZINybXdOX9MXv/view" target="_blank">Demo</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <h3>Cloud Storage Setup</h3>
+                <p>Created secure Amazon S3 storage with proper IAM roles and access permissions.</p>
+                <p><b>Tech:</b> AWS S3, IAM</p>
+                <div class="overlay">
+                    <a href="https://github.com/Gayathri-Nandakumar16/cloud-storage-setup" target="_blank">GitHub</a>
+                    <a href="https://drive.google.com/file/d/1nUl2FQcEJiES4yN9SXfneWF1LtzvTUHZ/view?usp=drive_link" target="_blank">Demo</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <h3>Cloud Monitoring & Alerts</h3>
+                <p>Implemented CloudWatch monitoring with SNS alerts to track events and notify users instantly.</p>
+                <p><b>Tech:</b> AWS CloudWatch, SNS</p>
+                <div class="overlay">
+                    <a href="https://github.com/Gayathri-Nandakumar16/CLOUD-MONITORING-AND-ALERTS" target="_blank">GitHub</a>
+                    <a href="https://drive.google.com/file/d/1L9m5rOaftHZhB575XAlgQCNNRBUPvUBY/view?usp=drive_link" target="_blank">Demo</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <h3>Multi-Cloud Architecture</h3>
+                <p>Integrated AWS frontend with GCP backend to demonstrate cross-cloud deployment and services.</p>
+                <p><b>Tech:</b> AWS, GCP</p>
+                <div class="overlay">
+                    <a href="https://github.com/Gayathri-Nandakumar16/MULTI-CLOUD-ARCHITECTURE" target="_blank">GitHub</a>
+                    <a href="https://drive.google.com/file/d/1wXAuxfPaKcDGzTXQpBY2-u0BEAtT6WeI/view?usp=drive_link" target="_blank">Demo</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+                <h3>ML-Based Cloud Scheduling</h3>
+                <p>Developed a system to detect and block malicious IoT data before uploading to AWS cloud.</p>
+                <p><b>Tech:</b> Python, ML, SQLite3, AWS EC2, S3</p>
+                <div class="overlay">
+                    <a href="https://github.com/Gayathri-Nandakumar16/ML-based-cloud-scheduling/tree/main" target="_blank">GitHub</a>
+                    <a href="https://drive.google.com/file/d/1gVt9XhOpG3Ls1aGlPhuY_oB_xof185Tn/view?usp=drive_link" target="_blank">Demo</a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
+                <h3>Secure Cloud Key Agreement</h3>
+                <p>Built a privacy-safe authentication system deployed on AWS EC2 using Flask and Python.</p>
+                <p><b>Tech:</b> Flask, Python, AWS EC2</p>
+                <div class="overlay">
+                    <a href="https://github.com/Gayathri-Nandakumar16/secure-cloud-authentication-0rtt" target="_blank">GitHub</a>
+                    <a href="https://drive.google.com/file/d/10wtoz-g-1pF46tsE8rvFjHiysmlU3hGV/view?usp=drive_link" target="_blank">Demo</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- CONTACT -->
+    <section id="contact" data-aos="fade-up">
+        <h2>Contact</h2>
+        <div class="card" style="text-align:center; padding:20px; max-width:400px; margin:0 auto;">
+            <p>📍 Trichy, Tamil Nadu, India</p>
+            <p>📧 <a href="mailto:gayathri16072004@gmail.com" style="color: var(--accent); text-decoration:none;">gayathri16072004@gmail.com</a></p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/gayathrinandakumar" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Gayathri-Nandakumar16" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/gayathri_nandakumar16/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://profile.indeed.com/" target="_blank"><i class="fa-solid fa-user"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 Gayathri N | Cloud Portfolio
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <!-- CERTIFICATE MODAL -->
+    <div id="certModal" class="modal">
+        <span class="close" onclick="closeCert()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Navbar active link highlight
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("nav a");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        /* ===== CERTIFICATE MODAL ===== */
+        function openCert(imagePath) {
+            const modal = document.getElementById("certModal");
+            const img = document.getElementById("certImage");
+            img.src = imagePath;
+            modal.style.display = "flex";
+        }
+
+        function closeCert() {
+            document.getElementById("certModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("certModal");
+            if (event.target === modal) {
+                closeCert();
+            }
+        };
+    </script>
+
+</body>
+
+</html>
+
+</html>
+
+</html>
