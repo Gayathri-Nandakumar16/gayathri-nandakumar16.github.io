@@ -144,7 +144,7 @@
             color: #dcdcdc;
             margin: 6px 0;
         }
-        /* EDUCATION LOGO CARD FIX */
+        /* EDUCATION LOGO CARD */
         
         .edu-item {
             display: flex;
@@ -181,20 +181,7 @@
             margin: 4px 0;
             color: #dcdcdc;
         }
-        /* Ensure overlay appears above but content stays readable */
-        
-        .project-card .overlay {
-            z-index: 5;
-        }
-        /* Mobile fix */
-        
-        @media (max-width: 768px) {
-            .edu-item {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        /* EXPERIENCE LOGO LAYOUT */
+        /* EXPERIENCE LOGO */
         
         .exp-item {
             display: flex;
@@ -223,14 +210,6 @@
         .exp-content {
             flex: 1;
         }
-        /* Responsive */
-        
-        @media (max-width: 768px) {
-            .exp-item {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
         /* ABOUT */
         
         .about {
@@ -254,20 +233,35 @@
             transform: scale(1.05) rotate(3deg);
         }
         /* SKILLS */
+        /* SKILLS */
         
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
+            /* increased gap between rows and columns */
             justify-content: center;
         }
         
         .skill {
-            padding: 12px 22px;
+            padding: 12px 28px;
+            /* more horizontal padding */
             border-radius: 25px;
             background: rgba(77, 181, 255, 0.15);
             border: 1px solid var(--accent);
-            animation: pop 2s infinite alternate;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            margin: 5px;
+            /* adds extra spacing between skill pills */
+            min-width: 100px;
+            /* ensures uniform width for better layout */
+        }
+        
+        .skill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(77, 181, 255, 0.4);
         }
         
         @keyframes pop {
@@ -285,7 +279,6 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
-        /* PROJECT CARD WITH BLUE CORNER */
         
         .project-card {
             position: relative;
@@ -293,7 +286,6 @@
             padding: 25px;
             border-radius: 18px;
             overflow: hidden;
-            /* BLUE CORNER FEATURE */
             border-left: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -313,7 +305,6 @@
             color: #dcdcdc;
             margin: 6px 0;
         }
-        /* OVERLAY */
         
         .project-card .overlay {
             position: absolute;
@@ -330,7 +321,6 @@
         .project-card:hover .overlay {
             opacity: 1;
         }
-        /* BUTTONS */
         
         .project-card .overlay a {
             padding: 10px 18px;
@@ -345,20 +335,6 @@
         .project-card .overlay a:hover {
             transform: scale(1.08);
             background: #fff;
-        }
-        
-        .overlay a {
-            background: var(--accent);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-        
-        .overlay a:hover {
-            transform: scale(1.1);
         }
         /* CONTACT */
         
@@ -401,6 +377,11 @@
             }
             .skills {
                 justify-content: center;
+            }
+            .edu-item,
+            .exp-item {
+                flex-direction: column;
+                text-align: center;
             }
         }
         /* CERTIFICATE MODAL */
@@ -450,6 +431,7 @@
             color: #000;
         }
     </style>
+
 </head>
 
 <body>
@@ -473,7 +455,7 @@
         <h1><span>Cloud Trainer</span></h1>
         <p>Passionate Cloud Trainer with hands-on experience in AWS, cloud security, infrastructure automation, and mentoring students through real-world cloud labs and projects. Trained via LinkedIn Learning and FITA Academy.</p>
         <a href="#projects" class="btn">View Projects</a>
-        <a href="Gayathri_Nandhakumar_Guest_Faculty_Cloud_Computing.pdf" class="btn" download>Download Resume</a>
+        <a href="GAYATHRI N Cloud Resume.pdf" class="btn" download>Download Resume</a>
     </section>
 
     <!-- ABOUT -->
@@ -495,16 +477,42 @@
     <section id="skills" data-aos="fade-up">
         <h2>Skills</h2>
         <div class="skills">
-            <div class="skill" data-aos="flip-left">AWS Cloud Hands-on Labs</div>
-            <div class="skill" data-aos="flip-left" data-aos-delay="100">Cloud Security Basics</div>
-            <div class="skill" data-aos="flip-left" data-aos-delay="200">Infrastructure Automation (Terraform)</div>
-            <div class="skill" data-aos="flip-left" data-aos-delay="300">Cloud Monitoring & Alerts (CloudWatch/SNS)</div>
-            <div class="skill" data-aos="flip-left" data-aos-delay="400">Linux & Python Labs</div>
-            <div class="skill" data-aos="flip-left" data-aos-delay="500">HTML, CSS, Web Basics for Cloud Projects</div>
-            <div class="skill" data-aos="flip-left" data-aos-delay="600">Student Mentoring & Lab Guidance</div>
-            <div class="skill" data-aos="flip-left" data-aos-delay="700">Workshop Delivery & Curriculum Design</div>
+
+            <!-- CLOUD SKILLS -->
+            <div class="skill-group" data-aos="fade-right">
+                <h4 style="color: var(--accent); margin-bottom:8px;">Cloud Skills</h4>
+                <div class="skill" data-aos="flip-left">AWS Cloud Hands-on Labs</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="100">Cloud Security Basics</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="200">Cloud Monitoring & Alerts (CloudWatch/SNS)</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="300">Infrastructure Automation (Terraform)</div>
+            </div>
+
+            <!-- DEVOPS SKILLS -->
+            <div class="skill-group" data-aos="fade-up">
+                <h4 style="color: var(--accent); margin-bottom:8px;">DevOps Skills</h4>
+                <div class="skill" data-aos="flip-left" data-aos-delay="400">CI/CD Pipelines (Jenkins/GitHub Actions)</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="500">Docker & Containerization</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="600">Kubernetes Basics</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="700">Infrastructure as Code (Terraform/Ansible)</div>
+            </div>
+
+            <!-- PROGRAMMING & WEB SKILLS -->
+            <div class="skill-group" data-aos="fade-left">
+                <h4 style="color: var(--accent); margin-bottom:8px;">Programming & Web</h4>
+                <div class="skill" data-aos="flip-left" data-aos-delay="800">Linux & Python Labs</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="900">HTML, CSS, Web Basics for Cloud Projects</div>
+            </div>
+
+            <!-- MENTORING SKILLS -->
+            <div class="skill-group" data-aos="fade-right">
+                <h4 style="color: var(--accent); margin-bottom:8px;">Mentoring & Training</h4>
+                <div class="skill" data-aos="flip-left" data-aos-delay="1000">Student Mentoring & Lab Guidance</div>
+                <div class="skill" data-aos="flip-left" data-aos-delay="1100">Workshop Delivery & Curriculum Design</div>
+            </div>
+
         </div>
     </section>
+
 
     <!-- EDUCATION -->
     <!-- EDUCATION -->
@@ -731,7 +739,6 @@
                 <a href="https://www.linkedin.com/in/gayathrinandakumar" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Gayathri-Nandakumar16" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://www.instagram.com/gayathri_nandakumar16/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://profile.indeed.com/" target="_blank"><i class="fa-solid fa-user"></i></a>
             </div>
         </div>
     </section>
