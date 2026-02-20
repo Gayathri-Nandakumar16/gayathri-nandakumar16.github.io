@@ -336,6 +336,17 @@
             transform: scale(1.08);
             background: #fff;
         }
+        /* FIX OVERLAY CLICK ISSUE */
+        
+        .project-card .overlay {
+            z-index: 10;
+        }
+        
+        .project-card .overlay a,
+        .project-card .overlay button {
+            position: relative;
+            z-index: 11;
+        }
         /* CONTACT */
         
         .social-icons {
@@ -609,11 +620,12 @@
 
             <div class="edu-item">
                 <div class="edu-logo">
-                    <img src="brainwave.jpg" alt="Brainwave Matrix Logo">
+                    <img src="brainwave.jpg" alt="Brainwave Logo">
                 </div>
 
                 <div class="edu-content">
                     <h3>Cloud Computing Intern</h3>
+                    <p>Learned commands and had hands-on experience in Linux system administration.</p>
                     <p><b>Organization:</b> Brainwave Matrix Solutions</p>
                     <p><b>Focus:</b> AWS fundamentals, cloud services, hands-on labs</p>
                 </div>
@@ -622,11 +634,10 @@
             <div class="overlay">
                 <button class="cert-btn" onclick="openCert('brainwavematrix.jpg')">
             View Experience Letter
-            </button>
+        </button>
             </div>
 
         </div>
-
         <br>
 
         <!-- CODTECH -->
